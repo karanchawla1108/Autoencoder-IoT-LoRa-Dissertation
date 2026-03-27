@@ -19,12 +19,16 @@ Image → Encoder → Latent Vector → LoRa Packets → Decoder → Reconstruct
 ```
 Autoencoder-IoT-LoRa-Dissertation/
 ├── MNIST Autoencoder/
-│   ├── Training_model_extend.ipynb   # VAE trained on MNIST digits
-│   └── vae_model.pt                  # Saved model weights
+│ ├── Training_model_extend.ipynb # Autoencoder trained on MNIST
+│ └── vae_model.pt # Saved model weights
 │
-└── Kaggle Autoencoder/
-    ├── kaggle_Auto_encoder (2).ipynb    # Autoencoder trained on Intel dataset
-    └── lora_autoencoder (2).pt          # Saved model weight
+├── Kaggle Autoencoder/
+│ ├── kaggle_Auto_encoder (2).ipynb # Autoencoder for Intel dataset
+│ └── lora_autoencoder (2).pt # Saved model weights
+│
+├── New Improved MNIST VAE model/
+│ ├── improved_vae_model.ipynb # Enhanced VAE training
+│ └── vae_model_improved.pth # Improved model weights
 ```
  
 ---
@@ -40,12 +44,30 @@ Autoencoder-IoT-LoRa-Dissertation/
  
 ## Model
  
-**LoRaAutoEncoder** — 3-layer convolutional encoder/decoder
- 
-- Input: `(3, 240, 320)` RGB image
-- Latent: `[16, 30, 40]` = 19,200 values
-- Loss: MSE reconstruction loss
- 
+### LoRaAutoEncoder (Kaggle)
+- 3-layer convolutional encoder/decoder  
+- Input: `(3, 240, 320)` RGB image  
+- Latent: `[16, 30, 40]` = 19,200 values  
+- Loss: MSE reconstruction loss  
+
+### MNIST VAE
+- Designed for grayscale image compression  
+- Lightweight and fast baseline model  
+
+### New Improved MNIST VAE
+- Enhanced VAE architecture  
+- Latent size: 64  
+- Designed for:
+  - Improved compression efficiency  
+  - Better reconstruction quality  
+  - Robustness to packet loss  
+
+**Functionality:**
+- Encodes image into latent vector  
+- Splits into 6 LoRa packets  
+- Handles missing packets during reconstruction  
+- Produces more stable outputs under packet loss  
+
 ---
  
 ## Results
@@ -65,8 +87,27 @@ Autoencoder-IoT-LoRa-Dissertation/
 | 30% | 0.17 |
 | 40% | 0.14 |
  
-> LoRa packet size: 51 bytes | ~376 packets per image
+### Improved MNIST VAE
+| Condition | SSIM |
+|---|---|
+| No packet loss | ~0.9+ |
+| 1 packet loss | Slight drop |
+| 2 packet loss | Moderate drop |
+| 3 packet loss | Significant drop |
  
+> LoRa packet size: ~48–51 bytes | 6 packets per image
+ 
+---
+ 
+## Tools & Libraries
+ 
+- Python, PyTorch, Google Colab  
+- NumPy, PIL  
+- `scikit-image` (SSIM), `torchvision`  
+- Raspberry Pi + LoRa modules (RFM9x)  
+- INA219 power sensor (energy measurement)  
+ 
+---
 ---
  
 ## Tools & Libraries

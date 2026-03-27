@@ -27,8 +27,9 @@ Autoencoder-IoT-LoRa-Dissertation/
 │ └── lora_autoencoder (2).pt # Saved model weights
 │
 ├── New Improved MNIST VAE model/
-│ ├── improved_vae_model.ipynb # Enhanced VAE training
+│ ├── New_VAE_Model.ipynb # Enhanced VAE training
 │ └── vae_model_improved.pth # Improved model weights
+| |__ New_VAE_Model.ipynb  # Extended version of the improved VAE notebook, includes full test pipeline.
 ```
  
 ---

@@ -36,8 +36,8 @@ Autoencoder-IoT-LoRa-Dissertation/
  
 ## Datasets
  
-| Dataset | Images | Size | Purpose |
-|---|---|---|---|
+| Dataset | Images | Size | Purpose | Packets |
+|---|---|---|---|---|
 | MNIST | 70,000 | 28×28 greyscale | Baseline | Divide packets x 3 | 
 | Intel Image Classification (Kaggle) | ~25,000 | 240×320 RGB | Real-world test |
 | Improved MNIST | 70,000 | 28×28 greyscale | Baseline | Divide packets x 6 |
